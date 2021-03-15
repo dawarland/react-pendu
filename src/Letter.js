@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
 
-export default function Letter(props) {
-    const [letter, setLetter] = useState(props.item);
-
+export default function Letter({item, index}) {
     return (
-        <div className="letter">
-            {letter}
+        <div key={index} className="letter">
+            {item}
         </div>
     );
 }

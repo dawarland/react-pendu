@@ -30,29 +30,40 @@ export default function PartyComponent({word , tries}) {
 
     }, [triedLetter,word]);
 
+    function parseWord(w,tried){
+        return w
+            .split('')
+            .map( (l) => (
+                    l.match(/['\s"]/) ? l : tried.has(l) ? l : "_"
+                )
+            )
+    }
+
     function renderParty(){
         return (
             <>
                 { heart && <div className="hearts">{heart}</div>}
                 <div className="party">
-                    <div className="word">
-                        { word && triedLetter && word.split('').map( (l,i) => (
-                                <div key={i} className="letter">
-                                    {l.match(/['\s"]/) ? l : triedLetter.has(l) ? l : "_" }
-                                </div>
+                    <div id="word" className="word">
+                        { word && triedLetter && parseWord(word,triedLetter).map( (l,i) => (
+                                <Letter item={l} index={i}/>
                             )
                         )}
                     </div>
                     <div className="tries">
                         <table cellSpacing="0" cellPadding="1" border="1" >
-                            <tr>
-                                <th>Mes essaies</th>
-                            </tr>
-                            { triedLetter && [...triedLetter].map( letter => (
-                                <tr key={letter}>
-                                    <td>{letter}</td>
+                            <thead>
+                                <tr>
+                                    <th>Mes essaies</th>
                                 </tr>
-                            ) ) }
+                            </thead>
+                            <tbody>
+                                { triedLetter && [...triedLetter].map( letter => (
+                                    <tr key={letter}>
+                                        <td>{letter}</td>
+                                    </tr>
+                                ) ) }
+                            </tbody>
                         </table>
                     </div>
                 </div>
