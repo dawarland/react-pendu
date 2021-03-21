@@ -8,6 +8,8 @@ It was a training project in ReactJS.
 Firsty, you have to choose the word (or the sentence) that you want to be found.
 Next, user select a letter with keybord. If the letter is in the word, this letter appeirs, else user lose 1 heart.
 
+Let's try it : https://react-pendu.herokuapp.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
